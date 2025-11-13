@@ -11,77 +11,58 @@ You will:
 4. Create end-to-end tests for critical user flows
 5. Apply debugging techniques for common MERN stack issues
 
-## Project Structure
 
-```
-mern-testing/
-├── client/                 # React front-end
-│   ├── src/                # React source code
-│   │   ├── components/     # React components
-│   │   ├── tests/          # Client-side tests
-│   │   │   ├── unit/       # Unit tests
-│   │   │   └── integration/ # Integration tests
-│   │   └── App.jsx         # Main application component
-│   └── cypress/            # End-to-end tests
-├── server/                 # Express.js back-end
-│   ├── src/                # Server source code
-│   │   ├── controllers/    # Route controllers
-│   │   ├── models/         # Mongoose models
-│   │   ├── routes/         # API routes
-│   │   └── middleware/     # Custom middleware
-│   └── tests/              # Server-side tests
-│       ├── unit/           # Unit tests
-│       └── integration/    # Integration tests
-├── jest.config.js          # Jest configuration
-└── package.json            # Project dependencies
-```
+## 🧪 MERN Application Testing and Debugging
 
-## Getting Started
+This repository contains a full-stack MERN (MongoDB, Express, React, Node.js) application implemented with a comprehensive multi-layered testing strategy, fulfilling the requirements for the assignment on testing and debugging MERN applications.
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week6-Assignment.md` file
-4. Explore the starter code and existing tests
-5. Complete the tasks outlined in the assignment
+---
 
-## Files Included
+## 🎯 Assignment Overview
 
-- `Week6-Assignment.md`: Detailed assignment instructions
-- Starter code for a MERN application with basic test setup:
-  - Sample React components with test files
-  - Express routes with test files
-  - Jest and testing library configurations
-  - Example tests for reference
+The primary goal of this assignment was to implement robust testing across all layers of the application, including unit, integration, and end-to-end testing, while maintaining high code quality and coverage.
 
-## Requirements
+### Key Objectives Achieved
 
-- Node.js (v18 or higher)
-- MongoDB (local installation or Atlas account)
-- npm or yarn
-- Basic understanding of testing concepts
+* **Setup:** Configured separate testing environments for the client (using `jest-environment-jsdom`) and server (using `testEnvironment: 'node'`).
+* **Unit Testing:** Implemented unit tests for critical server utilities/middleware and client components/utilities.
+* **Integration Testing:** Developed integration tests using Supertest for the server's Express API routes (`/api/users`).
+* **E2E Testing:** Created end-to-end tests using Playwright to validate critical user flows (counter, form submission, navigation).
+* **Coverage:** Achieved the required code coverage threshold (70%) for unit tests.
 
-## Testing Tools
+---
 
-- Jest: JavaScript testing framework
-- React Testing Library: Testing utilities for React
-- Supertest: HTTP assertions for API testing
-- Cypress/Playwright: End-to-end testing framework
-- MongoDB Memory Server: In-memory MongoDB for testing
+## 📂 Project Structure
 
-## Submission
+The project maintains a clear separation between the client and server, with dedicated test directories for organized execution.
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+mern-testing/ ├── client/                 # React Front-End │   ├── src/                # React Source Code │   │   ├── components/     # (e.g., Button.js) │   │   └── utils/          # (e.g., helpers.js) │   ├── tests/              # Client Tests │   │   ├── unit/           # (Component & Utility Tests) │   │   └── e2e/            # (Playwright E2E Tests) │   ├── package.json        # Client dependencies and scripts │   ├── jest.config.js      # Client Jest config (uses jsdom, Babel) │   └── playwright.config.js # Playwright E2E configuration ├── server/                 # Express.js Back-End │   ├── utils/              # (e.g., helpers.js) │   ├── middleware/         # (e.g., auth.js) │   └── tests/              # Server Tests │       ├── unit/           # (Utility/Middleware Tests) │       └── integration/    # (API/DB Tests using Supertest) │   └── package.json        # Server dependencies and scripts
 
-1. Complete all required tests (unit, integration, and end-to-end)
-2. Achieve at least 70% code coverage for unit tests
-3. Document your testing strategy in the README.md
-4. Include screenshots of your test coverage reports
-5. Demonstrate debugging techniques in your code
 
-## Resources
+---
 
-- [Jest Documentation](https://jestjs.io/docs/getting-started)
-- [React Testing Library Documentation](https://testing-library.com/docs/react-testing-library/intro/)
-- [Supertest Documentation](https://github.com/visionmedia/supertest)
-- [Cypress Documentation](https://docs.cypress.io/)
-- [MongoDB Testing Best Practices](https://www.mongodb.com/blog/post/mongodb-testing-best-practices) 
+## 🛠️ Testing Strategy and Tools
+
+The testing framework is built around three core layers:
+
+| Layer | Tool/Framework | Location/Scope | Purpose |
+| :--- | :--- | :--- | :--- |
+| **Unit** | Jest & RTL | `client/tests/unit/`, `server/tests/unit/` | Isolated testing of functions, components, and middleware. Mocking external dependencies. |
+| **Integration** | Jest & Supertest | `server/tests/integration/` | Testing the interaction between Express routes and application logic (API Contract). |
+| **E2E** | Playwright | `client/tests/e2e/` | Testing the complete user journey through the deployed (or served) application in a real browser environment. |
+
+### Execution Commands
+
+All tests can be executed from the respective `server/` or `client/` directories:
+
+| Context | Command | Test Scope |
+| :--- | :--- | :--- |
+| **Server** | `npm run test:unit` | Server-side Unit Tests (Helpers, Middleware) |
+| **Server** | `npm run test:integration` | Server-side Integration Tests (API Endpoints) |
+| **Client** | `npm run test:unit` | Client-side Unit Tests (Components, Utilities) |
+| **Client** | `npm run test:e2e` | Client-side End-to-End Tests (Playwright) |
+| **Global** | `npm run test:coverage` | Generate Code Coverage Reports |
+
+---
+
+## ✅ Submission Requirements Met
